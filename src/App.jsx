@@ -141,13 +141,79 @@ const App = () => {
   
   // console.log(merged);
   const datita = [...parsedData, ...parsedData2]
-    datita.forEach((column)=> {
-
-    let pruebita = column.WT;
-    let pruebita2 = column.PA;
-    console.log(pruebita, pruebita2);   
+  
+    const output = []
     
-  });
+    for(let i = 0; i < parsedData2.length; i++) {
+    
+    const row = {
+    
+    name: "",
+    
+    wtlt_last: 0,
+    
+    wtlt_curr: 0
+    
+    }
+    
+    // const index = array1.findIndex((element)=> array2[i].name === element.name)
+    
+    // row.name = array2[i].name
+    
+    // row.amt_last = array1[index].amt
+    
+    // row.amt_curr = array2[i].amt
+    
+    // output.push(row)
+    
+    // }
+    
+    // console.log(output)
+
+    
+    const e1 = output.findIndex((element)=> parsedData2[i].name === element.name)
+    const e2 = parsedData.findIndex((element)=> parsedData2[i].name === element.name)
+    const index = parsedData.findIndex((element)=> parsedData2[i].name === element.name)
+
+    
+    
+    if(e1 === -1) {
+    row.name = parsedData2[i].name 
+    row.wtlt_last = parsedData[e2].wtlt
+    row.wtlt_curr = parsedData2[i].wtlt
+    
+    }
+    
+    if(index !== -1) {
+       row.name_last = parsedData[index].name
+    
+    }
+    
+    
+  output.push(row)
+ }
+    
+    
+    console.log(output)
+
+
+    // const index = array1.findIndex((element)=> array2[i].name element.name)
+    
+    // row.name = array2[i].name
+    
+    // if(index !== -1) { row.amt_last = array1[index].amt
+    
+    // }
+    
+    // row.amt_curr = array2[i].amt
+
+  //   datita.forEach((column)=> {
+
+  //   let pruebita = column.WT;
+  //   let pruebita2 = column.PA;
+  //   console.log(pruebita, pruebita2);   
+    
+  // });
   
   // datita.forEach((column)=> {
 

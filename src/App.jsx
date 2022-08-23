@@ -3,7 +3,7 @@ import * as XLSX from "xlsx"
 import { useState } from 'react'
 import DataTable from "react-data-table-component"
 import './App.css'
-import firebaseConfig from "./firebase/config"
+
 
 const Loader = () => {
   return (
@@ -19,7 +19,6 @@ const App = () => {
   const [parsedData, setParsedData] = useState([])
   const [columns, setColumns] = useState([])
   const [loading, setLoading] = useState(false)
-  const [product, setProduct] = useState([]);
 
 
   const readFile = () => {

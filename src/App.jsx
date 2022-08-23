@@ -1,4 +1,4 @@
-import Papa from "papaparse"
+import Papa, { parse } from "papaparse"
 import * as XLSX from "xlsx"
 import { useState } from 'react'
 import DataTable from "react-data-table-component"
@@ -118,6 +118,7 @@ const App = () => {
           setTimeout(() => {
             setLoading(false)
           }, 2000)
+          alert("Carga exitosa")
         }
       }
       
@@ -125,11 +126,20 @@ const App = () => {
     
     )
   }
-
-  const prueba = [...parsedData]
-  console.log(parsedData)
-  console.log(parsedData2)
-  console.log(prueba)
+  
+  // let merged = []
+  // for(let i=0; i<parseFile.length; i++) {
+  //   merged.push({
+  //    ...parseFile[i], 
+  //    ...(parseFile2.find((itmInner) => itmInner.id === parseFile[i].id))}
+  //   );
+  // }
+  
+  // console.log(merged);
+  // const prueba = [...parsedData]
+  // console.log(parsedData)
+  // console.log(parsedData2)
+  // console.log(prueba)
   return (
     <div className="App">
       <input type="file" id="file1" name="file1"></input>

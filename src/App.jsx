@@ -3,12 +3,7 @@ import * as XLSX from "xlsx"
 import { useState } from 'react'
 import DataTable from "react-data-table-component"
 import './App.css'
-<<<<<<< HEAD
 
-
-=======
- 
->>>>>>> 1aa5cbf7009026daac0df3988cc72b8569380634
 const Loader = () => {
   return (
     <div>
@@ -43,8 +38,8 @@ const App = () => {
       return
     }
 
-    console.log([file1])
-    console.log([file2])
+    // console.log([file1])
+    // console.log([file2])
     setLoading(true)
 
     const reader = new FileReader()
@@ -58,7 +53,7 @@ const App = () => {
       const data = XLSX.utils.sheet_to_csv(ws, { header: 1})
       parseFile(data)
   
-      console.log(data)
+      // console.log(data)
     }
     reader.readAsBinaryString(file1)
 
@@ -70,7 +65,7 @@ const App = () => {
       const data = XLSX.utils.sheet_to_csv(ws, { header: 1})
       parseFile2(data)
   
-      console.log(data)
+      // console.log(data)
     }
     reader2.readAsBinaryString(file2)
     
@@ -145,7 +140,22 @@ const App = () => {
   // }
   
   // console.log(merged);
-  // const prueba = [...parsedData]
+  const datita = [...parsedData, ...parsedData2]
+    datita.forEach((column)=> {
+
+    let pruebita = column.WT;
+    let pruebita2 = column.PA;
+    console.log(pruebita, pruebita2);   
+    
+  });
+  
+  // datita.forEach((column)=> {
+
+  //   let pruebita = column.PArea;
+  //   console.log(pruebita, pruebita2);   
+    
+  // });
+  
   // console.log(parsedData)
   // console.log(parsedData2)
   // console.log(prueba)

@@ -3,6 +3,7 @@ import * as XLSX from "xlsx"
 import { useState } from 'react'
 import DataTable from "react-data-table-component"
 import './App.css'
+import firebaseConfig from "./firebase/config"
 
 const Loader = () => {
   return (
@@ -61,18 +62,6 @@ const App = () => {
   
  
 
-
-const filterMenu = (data) =>{
-   
-    setProduct(cartData.filter((e) => e.type === option))
-    if (optionMenu == option){
-      setOptionMenu('')
-    }else {
-      setOptionMenu(option)
-    }
-
-    
-  }
 
   const parseFile = (data) => {
     Papa.parse(

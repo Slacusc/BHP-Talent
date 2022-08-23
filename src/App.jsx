@@ -18,6 +18,8 @@ const App = () => {
   const [parsedData, setParsedData] = useState([])
   const [columns, setColumns] = useState([])
   const [loading, setLoading] = useState(false)
+  const [product, setProduct] = useState([]);
+
 
   const readFile = () => {
 
@@ -54,6 +56,21 @@ const App = () => {
       
     })
     setColumns(columns)
+    
+  }
+  
+ 
+
+
+const filterMenu = (data) =>{
+   
+    setProduct(cartData.filter((e) => e.type === option))
+    if (optionMenu == option){
+      setOptionMenu('')
+    }else {
+      setOptionMenu(option)
+    }
+
     
   }
 

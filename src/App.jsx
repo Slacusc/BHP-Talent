@@ -37,8 +37,8 @@ const App = () => {
       return
     }
 
-    console.log([file1])
-    console.log([file2])
+    // console.log([file1])
+    // console.log([file2])
     setLoading(true)
 
     const reader = new FileReader()
@@ -52,7 +52,7 @@ const App = () => {
       const data = XLSX.utils.sheet_to_csv(ws, { header: 1})
       parseFile(data)
   
-      console.log(data)
+      // console.log(data)
     }
     reader.readAsBinaryString(file1)
 
@@ -64,7 +64,7 @@ const App = () => {
       const data = XLSX.utils.sheet_to_csv(ws, { header: 1})
       parseFile2(data)
   
-      console.log(data)
+      // console.log(data)
     }
     reader2.readAsBinaryString(file2)
     
@@ -126,10 +126,28 @@ const App = () => {
     )
   }
 
-  const prueba = [...parsedData]
-  console.log(parsedData)
-  console.log(parsedData2)
-  console.log(prueba)
+//   const pleaseData = [...parsedData2];
+//   console.log(parsedData)
+//   // console.log(parsedData2)
+//   // console.log(prueba)
+
+
+//   // console.log(parsedData[0])
+//   const data = pleaseData;
+  
+// data.forEach((column)=> {
+//   let pruebita = column.WT;
+//   console.log(pruebita);   
+  
+// });
+
+// data.forEach((column)=> {
+//   let pruebita = colum['Pers.No.'];
+//   console.log(pruebita);   
+  
+// });
+
+
   return (
     <div className="App">
       <input type="file" id="file1" name="file1"></input>

@@ -3,6 +3,22 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body{
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.8)
+    ),
+      url(http://prod-upp-image-read.ft.com/6aecac00-e29a-11e6-9645-c9357a75844a);     
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; 
+}
+
+/*
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -73,3 +89,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+*/

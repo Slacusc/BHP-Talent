@@ -4,7 +4,6 @@ import * as XLSX from "xlsx"
 
 
 const Loader = () => {
-  
   return (
     <div>
       <h3>Cargando BHP Payroll...</h3>
@@ -18,6 +17,8 @@ const TablaBhp = () => {
 
 
     const [parsedData, setParsedData] = useState([])
+    const [parsedData2, setParsedData2] = useState([])
+
     const [columns, setColumns] = useState([])
     // const [selectedColumns, setSelectedColumns] = useState([])
     const [loading, setLoading] = useState(false)
@@ -31,11 +32,19 @@ const TablaBhp = () => {
           console.log("nope")
           return
         }
+
+        const e2 = document.getElementById("file1")
+        const [file2] = e2.files
+        if (!file2) {
+          console.log("nope")
+          return
+        }
   
   
         setLoading(true)
 
         const reader = new FileReader()
+        const reader2 = new FileReader()
 
         reader.onload = (evt) => {
             const bstr = evt.target.result
@@ -48,8 +57,20 @@ const TablaBhp = () => {
             // console.log(data)
           }
           reader.readAsBinaryString(file1)
-        }
 
+          reader2.onload = (evt) => {
+            const bstr = evt.target.result
+            const wb = XLSX.read(bstr, { type: "binary" })
+            const wsname = wb.SheetNames[0]
+            const ws = wb.Sheets[wsname]
+            const data = XLSX.utils.sheet_to_csv(ws, { header: 1 })
+            parseFile2(data)
+    
+            // console.log(data)
+          }
+          reader2.readAsBinaryString(file2)
+
+        }
     const createColumns = (data) => {
         const columns = []
         data.forEach((item) => {
@@ -81,9 +102,32 @@ const TablaBhp = () => {
           }
   
         )
+
       }
 
-      const columnsData = [...parsedData]
+        const parseFile2 = (url) => {
+          Papa.parse(
+            url,
+            {
+              download: true,
+              complete: (result) => {
+                createColumns(Object.keys(result.data[0]))
+                setParsedData2(result.data)
+    
+                setTimeout(() => {
+                  setLoading(false)
+                }, 2000)
+                alert("Carga exitosa")
+              }
+            }
+    
+    
+    
+          )
+        }
+      
+
+      const columnsData = [...parsedData, ...parsedData2]
       
     return (
       <>
@@ -91,6 +135,7 @@ const TablaBhp = () => {
   <div className="container flex flex-col text-center">
    
         <input type="file" id="file1" name="file1"></input>
+        <input type="url" id="file2" name="file2"></input>
         <button className=" bg-orange-2-bph" onClick={readFile}>Cargar</button>
         {loading && <Loader />}
 <section className=" h-60">

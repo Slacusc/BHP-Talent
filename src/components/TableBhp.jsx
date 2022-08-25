@@ -1,6 +1,19 @@
+import React, {useState} from "react"
+import Papa, { parse } from "papaparse"
+import * as XLSX from "xlsx"
 
+
+const Loader = () => {
+  return (
+    <div>
+      <h3>Cargando BHP Payroll...</h3>
+    </div>
+  )
+}
 
 const TablaBhp = () => {
+
+  
 
 
     const [parsedData, setParsedData] = useState([])
@@ -69,7 +82,8 @@ const TablaBhp = () => {
         )
       }
 
-
+      const columnsData = [...parsedData]
+      
     return (
       <>
       <main>
@@ -78,40 +92,40 @@ const TablaBhp = () => {
         <input type="file" id="file1" name="file1"></input>
         <button className=" bg-orange-2-bph" onClick={readFile}>Cargar</button>
         {loading && <Loader />}
-
-   <table cellspacing="0" className="m-5 bg-white rounded-lg">
+<section className=" h-60">
+   <table cellSpacing="0" className="m-5 bg-white rounded-lg">
+      <thead>
       <tr className="  h-14 bg-blue-grey-2-bph rounded-lg ">
-         <th>{name}</th>
+         <th>Id Employee</th>
          <th>Name</th>
-         <th>Email</th>
-         <th>Phone</th>
-         <th>Name</th>
-         <th>Email</th>
-         <th>Phone</th>
+         <th>Wage Type</th>
+         <th>Wage Type Long Text</th>
+         <th>Past</th>
+         <th>Current</th>
+         <th>Difference</th>
       </tr>
-        
-      <tr className=" bg-blue-grey-4-bph">
-         <td>Jane Doe</td>
-         <td>jane.doe@foo.com</td>
-         <td>01 800 2000</td>
-         <td>jane.doe@foo.com</td>
-         <td>01 800 2000</td>
-         <td>jane.doe@foo.com</td>
-         <td>01 800 2000</td>
-      </tr>
-      
-      <tr>
-         <td>John Doe</td>
-         <td>john.doe@foo.com</td>
-         <td>01 800 2000</td>
-         <td>jane.doe@foo.com</td>
-         <td>01 800 2000</td>
-         <td>jane.doe@foo.com</td>
-         <td>01 800 2000</td>
-      </tr>
+      </thead>
 
+      <tbody>
+        { columnsData.map( (column) => (
+   
+
+          //key={`${element.name}${element.key}`}
+        <tr className=" bg-blue-grey-4-bph">
+         <td>{column.id}</td>
+         <td>{column.name}</td>
+         <td>{column.wt} </td>
+         <td>{column.wtlt} </td>
+         <td>{column.past} </td>
+         <td>{column.current} </td>
+         <td>{parseFloat(column.past) - parseFloat(column.current) } </td>
+      </tr>
+      )) }
       
+      </tbody>
+
    </table>
+   </section>
    </div>
    </main>
      </>

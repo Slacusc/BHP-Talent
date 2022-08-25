@@ -151,7 +151,25 @@ const TablaBhp = () => {
 
   //metodo de filtrado
 
+  const calculateDiff = (num1, num2)=> {
+    return Number(num1.replace(/,/g, "")) - Number(num2.replace(/,/g, ""))
+  }
+
   let results = [...parsedData]
+  let diffs = []
+  const countDiffs = (data)=> {
+    let count = 0
+    data.forEach((item)=> {
+      const diff = calculateDiff(item.current, item.past)
+      if(diff != 0) {
+        count += 1
+      }
+    })
+
+    return count
+  }
+  
+
   if (!search) {
     // results = columnsData
    console.log("nope")
@@ -164,17 +182,21 @@ const TablaBhp = () => {
 
   console.log(results)
 
-
+  
 
   useEffect(() => {
     showData()
   }, [])
 
 
+
   return (
     <>
 
       <main>
+        <p>Discrepancias: {countDiffs(results)} - ({(countDiffs(results) * 100 / results.length).toFixed(2)}%)</p>
+        <p>Datos cargados: {results.length}</p>
+
         <div className="container flex flex-col text-center">
           <section className="flex flex-col items-center">
           <input type="file" id="file1" name="file1"></input>
@@ -183,8 +205,8 @@ const TablaBhp = () => {
           {loading && <Loader />}
           <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control' />
           </section>
-          <section className=" tablita h-52 flex flex-col items-center bg-white/30">
-            <table className=" w-10/12 m-5 text-sm text-center shadow-2xl font-[Arial] rounded-lg">
+          <section className=" tablita flex flex-col items-center bg-white/40 overflow-y-scroll">
+            <table className=" bhpTabla w-10/12 m-5 mt-10 text-sm text-center shadow-2xl font-[Arial] rounded-lg">
               <thead className=" h-16 text-sm text-white uppercase bg-blue-grey-2-bph ">
                 <tr className="  ">
                   <th>Id Employee</th>
@@ -199,24 +221,44 @@ const TablaBhp = () => {
 
               <tbody className="w-full mx-5">
                 {results.map((column) => (
-
-
                   //key={`${element.name}${element.key}`}
-                  <tr className=" bg-white hover:bg-blue-grey-3-bph hover:text-white cursor-pointer duration-200">
+                  <tr className=" bg-white hover:bg-blue-grey-3-bph hover:scale-105 hover:text-white cursor-pointer duration-200">
                     <td>{column.id}</td>
                     <td>{column.name}</td>
                     <td>{column.wt} </td>
                     <td>{column.wtlt} </td>
-                    <td>{column.past.replace(/,/g, ".")} </td>
-                    <td>{column.current.replace(/,/g, ".")} </td>
-                    <td>{(Number(column.past.replace(/,/g, "")) - Number(column.current.replace(/,/g, ""))).toLocaleString()} </td>
+                    <td className={ 
+                      calculateDiff(column.current, column.past) < 0 ? "bg-orange-3-bph/50 hover:bg-orange-3-bph " :
+                      calculateDiff(column.current, column.past) > 0 ? " bg-green-bph/50 hover:text-white  hover:bg-green-bph" :
+ calculateDiff(column.current, column.past) == 0 && column.current && column.past ? " bg-blue-bph/50 hover:text-white hover:bg-blue-bph" :
+                      "" 
+                    }>
+                      {!column.past ? "---" : column.past.replace(/,/g, ".")}
+                    </td>
+                    <td className={ 
+                      calculateDiff(column.current, column.past) < 0 ? "bg-orange-3-bph/50 hover:bg-orange-3-bph" :
+                      calculateDiff(column.current, column.past) > 0 ? " bg-green-bph/50 hover:text-white  hover:bg-green-bph" :
+                      calculateDiff(column.current, column.past) == 0 && column.current && column.past ? " bg-blue-bph/50 hover:text-white hover:bg-blue-bph" :
+                      "" 
+                    }>
+                      {!column.current ? "---" : column.current.replace(/,/g, ".")}
+                    </td>
+                    <td className={ 
+                      calculateDiff(column.current, column.past) < 0 ? "bg-orange-3-bph/50  hover:bg-orange-3-bph" :
+                      calculateDiff(column.current, column.past) > 0 ? "bg-green-bph/50 hover:text-white  hover:bg-green-bph" :
+                      calculateDiff(column.current, column.past) == 0 && column.current && column.past ? " bg-blue-bph/50 hover:text-white hover:bg-blue-bph" :
+                      "" 
+                    }>
+                      { !column.past || !column.current ? "---" : calculateDiff(column.current, column.past).toLocaleString()}
+                    </td>
                   </tr>
                 ))}
 
               </tbody>
 
             </table>
-            <button className=" bg-orange-2-bph" >Descargar</button>
+            
+            
 
           </section>
         </div>

@@ -28,6 +28,12 @@ main{
   min-height: 100vh;
 }
 
+
+.tablita{
+max-height: 700px;
+/* overflow-y: scroll; */
+}
+
 /*
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;

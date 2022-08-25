@@ -155,8 +155,8 @@ const TablaBhp = () => {
    console.log("nope")
   } else {
     results = columnsData.filter((dato) =>
-      dato.wt.toLowerCase().includes(search.toLocaleLowerCase())
-
+      dato.name.toLowerCase().includes(search.toLocaleLowerCase())
+      
     )
   }
 
@@ -174,13 +174,14 @@ const TablaBhp = () => {
 
       <main>
         <div className="container flex flex-col text-center">
-
+          <section className="flex flex-col items-center">
           <input type="file" id="file1" name="file1"></input>
           <input type="url" id="file2" name="file2" placeholder="Pega la URL"></input>
           <button className=" bg-orange-2-bph" onClick={readFile}>Cargar</button>
           {loading && <Loader />}
           <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control' />
-          <section className=" h-60">
+          </section>
+          <section className=" h-52 flex flex-col items-center">
             <table cellSpacing="0" className="m-5 bg-white rounded-lg">
               <thead>
                 <tr className="  h-14 bg-blue-grey-2-bph rounded-lg ">

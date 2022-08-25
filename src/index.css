@@ -34,6 +34,24 @@ max-height: 700px;
 /* overflow-y: scroll; */
 }
 
+#file1, #file2 {
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+#upload {
+  padding: 10px 30px;
+border-radius: 8px;
+}
+
+::file-selector-button {
+  color: white;
+  background-color: #5C889C;
+  border-radius: 6px;
+  padding: 5px;
+  }
+
 /*
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;

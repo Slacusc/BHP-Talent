@@ -194,18 +194,23 @@ const TablaBhp = () => {
     <>
 
       <main>
-        <p>Discrepancias: {countDiffs(results)} - ({(countDiffs(results) * 100 / results.length).toFixed(2)}%)</p>
-        <p>Datos cargados: {results.length}</p>
+        
 
         <div className="container flex flex-col text-center">
-          <section className="flex flex-col items-center">
-          <input type="file" id="file1" name="file1"></input>
-          <input type="url" id="file2" name="file2" placeholder="Pega la URL"></input>
-          <button className=" bg-orange-2-bph" onClick={loadbutton}>Cargar</button>
-          {loading && <Loader />}
-          <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control' />
+        <section  className="flex flex-row items-center content-center space-x-4 rounded-md bg-white/80 m-5">         
+        <input type="file" id="file1" name="file1" className=""></input>
+        <input type="url" id="file2" name="file2" placeholder="Pega la URL"></input>
+        <button id="upload" className=" bg-orange-2-bph text-white hover:bg-orange-1-bph transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ..." onClick={readFile}>CARGAR</button>          {loading && <Loader />}
+          
           </section>
-          <section className=" tablita flex flex-col items-center bg-white/40 overflow-y-scroll">
+
+          <section className="h-20 p-5 rounded-lg bg-white/80">
+         <p className="">Discrepancias: {countDiffs(results)} - ({(countDiffs(results) * 100 / results.length).toFixed(2)}%)</p>
+          <p>Datos cargados: {results.length}</p>
+          </section>
+          <section className=" tablita flex flex-col items-center bg-white/50 overflow-y-scroll mt-10">
+          <input value={search} onChange={searcher} type="text" placeholder='Buscar por dato' className='form-control mt-10 rounded-md h-7 w-15 text-center' />
+          
             <table className=" bhpTabla w-10/12 m-5 mt-10 text-sm text-center shadow-2xl font-[Arial] rounded-lg">
               <thead className=" h-16 text-sm text-white uppercase bg-blue-grey-2-bph ">
                 <tr className="  ">

@@ -4,13 +4,7 @@ import * as XLSX from "xlsx"
 
 
 const Loader = () => {
-
-
   
-  Papa.parse(url, {
-    download: true,
-    // rest of config ...
-  })
   return (
     <div>
       <h3>Cargando BHP Payroll...</h3>

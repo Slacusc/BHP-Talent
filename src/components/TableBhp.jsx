@@ -208,12 +208,15 @@ const TablaBhp = () => {
           
           </section>
           </div>
+          { results.length > 0 && 
+
           <div className="flex flex-col items-center">
           <section className="h-20 w-4/6 p-5 rounded-lg bg-white/80 text-orange-1-bph font-bold">
          <p className="">Discrepancias: {countDiffs(results)} - ({(countDiffs(results) * 100 / results.length).toFixed(2)}%)</p>
           <p>Datos cargados: {results.length}</p>
           </section>
           </div>
+          }
 
           <section className=" tablita flex flex-col items-center bg-white/50 overflow-y-scroll mt-10">
           <input value={search} onChange={searcher} type="text" placeholder='Buscar por dato' className='form-control mt-10 rounded-md h-7 w-15 text-center' />

@@ -102,6 +102,8 @@ const TablaBhp = () => {
           setTimeout(() => {
             setLoading(false)
           }, 2000)
+          alert("Carga exitosa")
+
         }
       }
 
@@ -206,13 +208,15 @@ const TablaBhp = () => {
                     <td>{column.wtlt} </td>
                     <td>{column.past} </td>
                     <td>{column.current} </td>
-                    <td>{parseFloat(column.past) - parseFloat(column.current)} </td>
+                    <td>{Number(column.past) - Number(column.current)} </td>
                   </tr>
                 ))}
 
               </tbody>
 
             </table>
+            <button className=" bg-orange-2-bph" >Descargar</button>
+
           </section>
         </div>
       </main>

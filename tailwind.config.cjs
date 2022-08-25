@@ -13,7 +13,9 @@ module.exports = {
         'blue-grey-1-bph':'#2B5368',
         'blue-grey-2-bph':'#45768B',
         'blue-grey-3-bph':'#6BA4B8',
-        'blue-grey-4-bph':'#BFCED6'
+        'blue-grey-4-bph':'#BFCED6',
+        'green-bph':'#06AD96',
+        'blue-bph':'#0099CC',
          }
     },
   },

@@ -90,6 +90,7 @@ Dentro de los méritos de esta app tenemos:
 Mediante este [link](https://www.figma.com/file/P5MMMTQwwWGTxz5diq1QIV/BHP---Talent-Fest?node-id=0%3A1) se puede acceder a los prototipos hechos en Figma representado UX/UI antes de que empezará el codeo.
 
 **Link de descarga de Tabla excel para prueba**
+[link](https://docs.google.com/spreadsheets/d/1-riVF1YI5drFRqDoCoeS2jL0q5b6sHfs/edit?usp=sharing&ouid=106150383958074611680&rtpof=true&sd=true)
 
 **Cohort SCL020 Laboratoria Front-End**
 
@@ -103,4 +104,8 @@ Mediante este [link](https://www.figma.com/file/P5MMMTQwwWGTxz5diq1QIV/BHP---Tal
 **Mentora:**
 
 - Fernanda Albuquerque.
+
+**Coach honorifico**
+
+-  Mauricio Santelices.
 

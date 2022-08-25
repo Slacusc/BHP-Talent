@@ -4,6 +4,13 @@ import { useState } from 'react'
 import DataTable from "react-data-table-component"
 
 
+const Loader = () => {
+  return (
+    <div>
+      <h3>Cargando BHP Payroll...</h3>
+    </div>
+  )
+}
 
 
 const FilterApp = () => {

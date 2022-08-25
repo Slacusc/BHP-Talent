@@ -18,8 +18,6 @@ const TablaBhp = () => {
 
 
   const [parsedData, setParsedData] = useState([])
-  const [parsedData2, setParsedData2] = useState([])
-
   const [columns, setColumns] = useState([])
   // const [selectedColumns, setSelectedColumns] = useState([])
   const [loading, setLoading] = useState(false)
@@ -28,27 +26,23 @@ const TablaBhp = () => {
   const [search, setSearch] = useState("")
 
 
-  const readFile = () => {
-
-    const e = document.getElementById("file1")
-    const [file1] = e.files
-    if (!file1) {
-      console.log("nope")
-      return
-    }
-
-    const e2 = document.getElementById("file1")
-    const [file2] = e2.files
-    if (!file2) {
-      console.log("nope")
-      return
-    }
-
+  const readUrl = (url) => {
 
     setLoading(true)
+    parseFile2(url)
+
+
+  }
+
+  const readFile = (file1) => {
+
+   
+  
+
+    setLoading(true)
+  
 
     const reader = new FileReader()
-    const reader2 = new FileReader()
 
     reader.onload = (evt) => {
       const bstr = evt.target.result
@@ -62,18 +56,7 @@ const TablaBhp = () => {
     }
     reader.readAsBinaryString(file1)
 
-    reader2.onload = (evt) => {
-      const bstr = evt.target.result
-      const wb = XLSX.read(bstr, { type: "binary" })
-      const wsname = wb.SheetNames[0]
-      const ws = wb.Sheets[wsname]
-      const data = XLSX.utils.sheet_to_csv(ws, { header: 1 })
-      parseFile2(data)
-
-      // console.log(data)
-    }
-    reader2.readAsBinaryString(file2)
-
+    
   }
 
   const createColumns = (data) => {
@@ -103,6 +86,8 @@ const TablaBhp = () => {
           setTimeout(() => {
             setLoading(false)
           }, 2000)
+          alert("Carga exitosa")
+
         }
       }
 
@@ -116,8 +101,10 @@ const TablaBhp = () => {
       {
         download: true,
         complete: (result) => {
-          createColumns(Object.keys(result.data[0]))
-          setParsedData2(result.data)
+          result.data.splice(0,2)
+          // createColumns(Object.keys(result.data[0]))
+          setParsedData(result.data)
+          console.log(result.data)
 
           setTimeout(() => {
             setLoading(false)
@@ -131,8 +118,22 @@ const TablaBhp = () => {
     )
   }
 
+  const loadbutton = () =>{
+    const url = document.getElementById("file2").value
+    const e = document.getElementById("file1")
+    const [file1] = e.files
+    if (!file1 && url) {
+      readUrl(url)
+      // return
+    }else{
+      readFile(file1)
+    }
 
-  const columnsData = [...parsedData, ...parsedData2]
+
+    
+  }
+
+  const columnsData = [...parsedData]
 
 
   const showData = async () => {
@@ -142,7 +143,7 @@ const TablaBhp = () => {
     // setUsers(data)
   }
 
-  showData()
+  // showData()
   const searcher = (e) => {
     setSearch(e.target.value)
     console.log(e.target.value)
@@ -150,7 +151,7 @@ const TablaBhp = () => {
 
   //metodo de filtrado
 
-  let results = [...parsedData, ...parsedData2]
+  let results = [...parsedData]
   if (!search) {
     // results = columnsData
    console.log("nope")
@@ -178,7 +179,7 @@ const TablaBhp = () => {
           <section className="flex flex-col items-center">
           <input type="file" id="file1" name="file1"></input>
           <input type="url" id="file2" name="file2" placeholder="Pega la URL"></input>
-          <button className=" bg-orange-2-bph" onClick={readFile}>Cargar</button>
+          <button className=" bg-orange-2-bph" onClick={loadbutton}>Cargar</button>
           {loading && <Loader />}
           <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control' />
           </section>
@@ -206,15 +207,17 @@ const TablaBhp = () => {
                     <td>{column.name}</td>
                     <td>{column.wt} </td>
                     <td>{column.wtlt} </td>
-                    <td>{column.past} </td>
-                    <td>{column.current} </td>
-                    <td>{parseFloat(column.past) - parseFloat(column.current)} </td>
+                    <td>{column.past.replace(/,/g, ".")} </td>
+                    <td>{column.current.replace(/,/g, ".")} </td>
+                    <td>{(Number(column.past.replace(/,/g, "")) - Number(column.current.replace(/,/g, ""))).toLocaleString()} </td>
                   </tr>
                 ))}
 
               </tbody>
 
             </table>
+            <button className=" bg-orange-2-bph" >Descargar</button>
+
           </section>
         </div>
       </main>

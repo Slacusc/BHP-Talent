@@ -89,6 +89,8 @@ Dentro de los méritos de esta app tenemos:
 
 Mediante este [link](https://www.figma.com/file/P5MMMTQwwWGTxz5diq1QIV/BHP---Talent-Fest?node-id=0%3A1) se puede acceder a los prototipos hechos en Figma representado UX/UI antes de que empezará el codeo.
 
+**Link de descarga de Tabla excel para prueba**
+
 **Cohort SCL020 Laboratoria Front-End**
 
 **Equipo desarrollador:**

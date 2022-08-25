@@ -176,7 +176,9 @@ const TablaBhp = () => {
   } else {
     results = columnsData.filter((dato) =>
       dato.name.toLowerCase().includes(search.toLocaleLowerCase())
-      
+      ||
+      dato.wt.toLowerCase().includes(search.toLocaleLowerCase())
+
     )
   }
 

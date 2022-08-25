@@ -118,7 +118,7 @@ const TablaBhp = () => {
     )
   }
 
-  const loadbutton = () =>{
+  const loadButton = () =>{
     const url = document.getElementById("file2").value
     const e = document.getElementById("file1")
     const [file1] = e.files
@@ -197,17 +197,22 @@ const TablaBhp = () => {
         
 
         <div className="container flex flex-col text-center">
-        <section  className="flex flex-row items-center content-center space-x-4 rounded-md bg-white/80 m-5">         
+          <div className="flex flex-col items-center">
+        <section  className="flex flex-row items-center p-5 content-center space-x-4 rounded-md bg-white/80 m-5">         
         <input type="file" id="file1" name="file1" className=""></input>
         <input type="url" id="file2" name="file2" placeholder="Pega la URL"></input>
-        <button id="upload" className=" bg-orange-2-bph text-white hover:bg-orange-1-bph transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ..." onClick={readFile}>CARGAR</button>          {loading && <Loader />}
+        <button id="upload" className=" bg-orange-2-bph text-white hover:bg-orange-1-bph transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ..." onClick={loadButton}>CARGAR</button>          
+        {loading && <Loader />}
           
           </section>
-
-          <section className="h-20 p-5 rounded-lg bg-white/80">
+          </div>
+          <div className="flex flex-col items-center">
+          <section className="h-20 w-4/6 p-5 rounded-lg bg-white/80 text-orange-1-bph font-bold">
          <p className="">Discrepancias: {countDiffs(results)} - ({(countDiffs(results) * 100 / results.length).toFixed(2)}%)</p>
           <p>Datos cargados: {results.length}</p>
           </section>
+          </div>
+
           <section className=" tablita flex flex-col items-center bg-white/50 overflow-y-scroll mt-10">
           <input value={search} onChange={searcher} type="text" placeholder='Buscar por dato' className='form-control mt-10 rounded-md h-7 w-15 text-center' />
           
@@ -262,7 +267,7 @@ const TablaBhp = () => {
               </tbody>
 
             </table>
-            
+            <button id="upload" className=" mb-10 bg-orange-2-bph text-white hover:bg-orange-1-bph transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ...">DESCARGAR</button>
             
 
           </section>

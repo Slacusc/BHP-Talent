@@ -27,7 +27,9 @@ main{
   width: 100%;
   min-height: 100vh;
 }
-
+.barrita {
+  width: 1000%;
+}
 
 .tablita{
 max-height: 700px;

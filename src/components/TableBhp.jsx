@@ -135,7 +135,7 @@ const TablaBhp = () => {
   <div className="container flex flex-col text-center">
    
         <input type="file" id="file1" name="file1"></input>
-        <input type="url" id="file2" name="file2"></input>
+        <input type="url" id="file2" name="file2" placeholder="Pega la URL"></input>
         <button className=" bg-orange-2-bph" onClick={readFile}>Cargar</button>
         {loading && <Loader />}
 <section className=" h-60">

@@ -75,6 +75,7 @@ const TablaBhp = () => {
     reader2.readAsBinaryString(file2)
 
   }
+
   const createColumns = (data) => {
     const columns = []
     data.forEach((item) => {
@@ -181,10 +182,10 @@ const TablaBhp = () => {
           {loading && <Loader />}
           <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control' />
           </section>
-          <section className=" h-52 flex flex-col items-center">
-            <table cellSpacing="0" className="m-5 bg-white rounded-lg">
-              <thead>
-                <tr className="  h-14 bg-blue-grey-2-bph rounded-lg ">
+          <section className=" tablita h-52 flex flex-col items-center bg-white/30">
+            <table className=" w-10/12 m-5 text-sm text-center shadow-2xl font-[Arial] rounded-lg">
+              <thead className=" h-16 text-sm text-white uppercase bg-blue-grey-2-bph ">
+                <tr className="  ">
                   <th>Id Employee</th>
                   <th>Name</th>
                   <th>Wage Type</th>
@@ -195,12 +196,12 @@ const TablaBhp = () => {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="w-full mx-5">
                 {results.map((column) => (
 
 
                   //key={`${element.name}${element.key}`}
-                  <tr className=" bg-blue-grey-4-bph">
+                  <tr className=" bg-white hover:bg-blue-grey-3-bph hover:text-white cursor-pointer duration-200">
                     <td>{column.id}</td>
                     <td>{column.name}</td>
                     <td>{column.wt} </td>

@@ -4,6 +4,7 @@
 
 
 
+
 ## Resumen
 
   **BHP** tiene en Chile 4 compañías con múltiples reglas de pago, que pasan por validaciones y procesos que requieren análisis minuciosos y exhaustivos.

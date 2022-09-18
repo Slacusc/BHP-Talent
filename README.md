@@ -1,7 +1,5 @@
 # Reto BHP,
 # HR Payroll/Talent Fest 2022 @Laboratoria #
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7aeea360-c35a-4c35-abb4-2b4f68a6e296/deploy-status)](https://app.netlify.com/sites/classy-kitsune-0460aa/deploys)
-
 
 
 
